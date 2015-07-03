@@ -8,6 +8,6 @@ squirrels = [
 ]
 
 module.exports = (robot) ->
-  robot.respons /fuck/gi, (msg) ->
+  robot.respond /fuck/gi, (msg) ->
     msg.send msg.random.squirrels
 

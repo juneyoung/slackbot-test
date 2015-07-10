@@ -12,10 +12,8 @@ module.exports = function(robot){
 	];
 
 	var scheduledMumble = function(){
-		robot.respond(function(msg){
-			var pickIdx = Math.floor(Math.random() * mumbling_replies.length)
-			msg.reply(mumbling_replies[pickIdx]);
-		});
+		var pickIdx = Math.floor(Math.random() * mumbling_replies.length);
+		robot.logger.info(mumbling_replies[pickIdx]);
 	}
 
 	robot.hear(/what is your name/igm, function(msg){

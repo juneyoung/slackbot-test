@@ -13,7 +13,7 @@ module.exports = function(robot){
 
 	var scheduledMumble = function(){
 
-		console.log(robot.room);
+		console.log(robot.brain.users());
 
 		var pickIdx = Math.floor(Math.random() * mumbling_replies.length);
 		robot.logger.info(mumbling_replies[pickIdx]);

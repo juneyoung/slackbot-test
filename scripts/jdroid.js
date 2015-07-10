@@ -4,22 +4,27 @@
 
 module.exports = function(robot){
 
-	var fourword_replies = [
-		"Yeah, fuck you, too"
-		, "Suck my dick!"
-		, "Why? Call your mama"
+	var mumbling_replies = [
+		"Blah blah ..."
+		, "Life is such boring!"
+		, "Peter Piper picked a peck of pickled pepper. 
+		   Did Peter Piper pick a peck of pickled pepper? 
+		   If Peter Piper picked a peck of pickled pepper, 
+		   Where's the peck of pickled pepper Peter Piper picked?"
 	];
 
-	robot.hear("I'm hugry", function(msg){
-		msg.send("Eat your own flesh");
+	robot.hear(/I'm hugry/igm, function(msg){
+		msg.send("So what?");
 	}); 
 
-	robot.respond("fuck you", function(msg){
-		var pickIdx = Math.floor(Math.random() * fourword_replies.length)
-		msg.reply(fourword_replies[pickIdx]);
+	setInterval(60, function(){
+		robot.respond(function(msg){
+			var pickIdx = Math.floor(Math.random() * mumbling_replies.length)
+		msg.reply(mumbling_replies[pickIdx]);
+		});
 	});
 
-	robot.hear("What is your name?", function(msg){
+	robot.hear(/What is your name?/igm, function(msg){
 		msg.send(robot.name);
 	});
-}
+};

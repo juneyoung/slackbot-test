@@ -12,11 +12,10 @@ module.exports = function(robot){
 	];
 
 	var scheduledMumble = function(){
+		console.log('running schedule');
 		var pickIdx = Math.floor(Math.random() * mumbling_replies.length);
 		robot.logger.info(mumbling_replies[pickIdx]);
 	};
-
-	robot.send("This bot represent Juneyoung!");
 
 	robot.hear(/what is your name/igm, function(msg){
 		msg.send(robot.name);

@@ -12,6 +12,9 @@ module.exports = function(robot){
 	];
 
 	var scheduledMumble = function(){
+
+		console.log(robot.room);
+
 		var pickIdx = Math.floor(Math.random() * mumbling_replies.length);
 		robot.logger.info(mumbling_replies[pickIdx]);
 		robot.send(null, mumbling_replies[pickIdx]);

@@ -7,10 +7,7 @@ module.exports = function(robot){
 	var mumbling_replies = [
 		"Blah blah ..."
 		, "Life is such boring!"
-		, "Peter Piper picked a peck of pickled pepper. 
-		   Did Peter Piper pick a peck of pickled pepper? 
-		   If Peter Piper picked a peck of pickled pepper, 
-		   Where's the peck of pickled pepper Peter Piper picked?"
+		, "Peter Piper picked a peck of pickled pepper. Did Peter Piper pick a peck of pickled pepper? If Peter Piper picked a peck of pickled pepper, Where's the peck of pickled pepper Peter Piper picked?"
 	];
 
 	robot.hear(/I'm hugry/igm, function(msg){

@@ -81,8 +81,13 @@ module.exports = function(robot){
 	});
 
 	robot.hear(/mumble on/igm, function(msg){
+
+		console.log(msg.message.text);
+
 		var lang = splitCmd(msg.message.text)[2];
+		console.log('language >> ' + lang);
 		var mumble = new Mumbles(lang);
+		mumbling_replies = [];
 		mumbling_replies = mumble.getMumbleList();
 
 		if(!checkThreadIsRunning(mumbleCmd)){

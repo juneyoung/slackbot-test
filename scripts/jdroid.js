@@ -82,9 +82,8 @@ module.exports = function(robot){
 
 	robot.hear(/mumble on/igm, function(msg){
 
-		console.log(msg.message.text);
-
-		var lang = splitCmd(msg.message.text)[2];
+		console.log(msg.envelope.message.text);
+		var lang = splitCmd(msg.envelope.message.text)[2];
 		console.log('language >> ' + lang);
 		var mumble = new Mumbles(lang);
 		mumbling_replies = [];
@@ -104,7 +103,7 @@ module.exports = function(robot){
 	})
 
 	robot.hear(/show news/igm, function(msg){
-		var cmdlits = splitCmd(msg.message.text);
+		var cmdlits = splitCmd(msg.envelope.message.text);
 		var contentsProvider;
 		var isScheduled;
 		var duration;
@@ -125,7 +124,6 @@ module.exports = function(robot){
 	});
 
 	robot.hear(/show threads/igm, function(msg){
-		console.log(msg);
 		msg.send(getAllThreadNames());
 	})
 

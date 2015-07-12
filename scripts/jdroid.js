@@ -82,6 +82,9 @@ module.exports = function(robot){
 
 	robot.hear(/mumble on/igm, function(msg){
 
+		console.log(msg);
+		return;
+
 		console.log(msg.envelope.message.text);
 		var lang = splitCmd(msg.envelope.message.text)[2];
 		console.log('language >> ' + lang);

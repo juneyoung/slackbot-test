@@ -231,7 +231,7 @@ module.exports = function(robot){
 	/* Slack Message Handling */
 
 	function rmSlackUserSyntax(msg) {
-		if(!msg.message.startsWith('@')) return msg.message.rawText;
+		if(!(msg.message.indexOf('@') == 0)) return msg.message.rawText;
 		var originalSlackMsg = msg.message.rawText;
 		// basic format <@user>: text
 		var cmd = originalSlackMsg.split(':')[1];

@@ -83,6 +83,7 @@ module.exports = function(robot){
 	robot.hear(/mumble on/igm, function(msg){
 
 		console.log(msg);
+		console.log(msg.rawText)
 		return;
 
 		console.log(msg.envelope.message.text);

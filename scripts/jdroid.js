@@ -125,6 +125,7 @@ module.exports = function(robot){
 	});
 
 	robot.hear(/show threads/igm, function(msg){
+		console.log(msg);
 		msg.send(getAllThreadNames());
 	})
 

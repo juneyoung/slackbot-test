@@ -83,7 +83,7 @@ module.exports = function(robot){
 	robot.hear(/mumble on/igm, function(msg){
 
 		console.log(msg);
-		console.log(msg.message.rawText);
+		console.log(rmSlackUserSyntax(msg));
 		return;
 
 		console.log(msg.envelope.message.text);
@@ -223,5 +223,18 @@ module.exports = function(robot){
 
 	var splitCmd = function (originalInput) {
 		return originalInput.split(' ');
+	}
+
+
+	//=========================================================================
+	//=========================================================================
+	/* Slack Message Handling */
+
+	function rmSlackUserSyntax(msg) {
+		if(!msg.message.startWith('@')) return msg.message.rawText;
+		var originalSlackMsg = msg.message.rawText;
+		// basic format <@user>: text
+		var cmd = originalSlackMsg.split(':')[1];
+		return cmd.trim();
 	}
 };

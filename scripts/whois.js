@@ -6,8 +6,7 @@ module.exports = function (robot) {
 	robot.hear(/whoami/igm, function(msg){
 		try{
 			var userObj = robot.brain.userForId(msg.message.user.id);
-			var answerStr = stringifyObject(userObj);
-			msg.send(answerStr);
+			msg.send(stringifyObject(userObj));
 		}catch(ex){
 			robot.logger.info('Your user data is currupted :-(');
 		}
@@ -17,7 +16,7 @@ module.exports = function (robot) {
 		try{
 			var name = getLastParam('whois', msg.message.text);
 			var userObj = robot.brain.usersForFuzzyName(name);
-			robot.logger.info(userObj);
+			message.send(stringifyObject(userObj));
 		}catch(ex){
 			console.log(ex);
 			robot.logger.info(msg);

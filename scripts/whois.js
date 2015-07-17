@@ -14,9 +14,13 @@ module.exports = function (robot) {
 	});
 
 	robot.hear(/whois/igm, function(msg){
-		var name = getLastParam('whois', msg.message.text);
-		var userObj = robot.brain.usersForFuzzyName(name);
-		robot.logger.info(userObj);
+		try{
+			var name = getLastParam('whois', msg.message.text);
+			var userObj = robot.brain.usersForFuzzyName(name);
+			robot.logger.info(userObj);
+		}catch(ex){
+			robot.logger.info(msg);
+		}
 	});	
 
 	robot.hear(/register me/igm, function(msg){

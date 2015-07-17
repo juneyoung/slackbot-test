@@ -29,6 +29,9 @@ module.exports = function (robot) {
 	});
 
 	var getLastParam = function (cmd, message) {
+
+		console.log('aaaaaaaaa');
+		console.log(typeof message);
 		var lastParam = '';
 		if(message.endsWith(cmd)) return lastParam;
 		console.log(message);

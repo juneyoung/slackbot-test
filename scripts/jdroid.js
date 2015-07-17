@@ -134,6 +134,7 @@ module.exports = function(robot){
 		var cmd = msg.message.text;
 		var cmds = cmd.split(' ');
 		var target = cmds[cmds.length - 1];
+		console.log(target);
 		console.log(robot.brain.userForId(msg.message.user.id));
 		
 	});

@@ -97,8 +97,8 @@ module.exports = function(robot){
 		}
 	});
 
-	robot.hear(/show threads/igm, function(msg){
-		msg.send(getAllThreadNames());
+	robot.respond(/show threads/igm, function(msg){
+		msg.reply(getAllThreadNames());
 	});
 
 	//=========================================================================

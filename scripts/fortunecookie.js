@@ -51,9 +51,9 @@ var FortuneCookie = function () {
 var FORTUNECOOKIE = FORTUNECOOKIE || new FortuneCookie();
 
 module.exports = function(robot) {
-	robot.hear(/give me a fortune cookie/igm, function(msg){
+	robot.respond(/give me a fortune cookie/igm, function(msg){
 		try{
-			msg.send('¯\_(ツ)_/¯ ' + FORTUNECOOKIE.init(getLang(msg.message.text)).getCookie());
+			msg.reply('¯\_(ツ)_/¯ ' + FORTUNECOOKIE.init(getLang(msg.message.text)).getCookie());
 		}catch(exception){
 			console.log('An exception has occured >> ' + exception);
 			console.log('Recieved message is >> ' + msg);

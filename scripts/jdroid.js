@@ -46,28 +46,6 @@ var Mumbles = function(lang){
 	}
 }
 
-// data should be  [{'name': 'a', 'id': 'a', 'type' : 'text', style : ''}, {'name' : 'b', 'id': 'b', 'type': 'textarea', style: ''}]
-var RegForm = function(attributeArray){
-	var form = document.createElement('form');
-	for(var i = 0; i < attributeArray.length; i++){
-		var singleName = attributeArray[i].name;
-		var singleId = attributeArray[i].id;
-		var singleType = attributeArray[i].type;
-		var singleStyle =  attributeArray[i].style;
-		var input = document.createElement('input');
-		input.setAttribute('name', singleName);
-		input.setAttribute('id', singleId);
-		input.setAttribute('type', singleType);
-		input.setAttribute('style', singleStyle);
-		form.appendChild(input);		
-	}
-
-	this.getForm = function(){
-		return this.form;
-	}
-}
-
-
 module.exports = function(robot){
 
 	const mumbleCmd = 'mumble';
@@ -75,7 +53,6 @@ module.exports = function(robot){
 	var threads = [];
 
 	var mumbling_replies;
-
 
 	// To control threads in js
 	// Every thread should be designed in singleton pattern
@@ -149,38 +126,16 @@ module.exports = function(robot){
 	});
 
 	/*Register User information to Robot brain*/
-	robot.respond(/register me/igm, function(msg){
-		var params = [{
-			'name' : 'name'
-			, 'id' : 'name'
-			, 'type' : 'text'
-			, 'style' : ''
-		}, {
-			'name' : 'department'
-			, 'id' : 'department'
-			, 'type' : 'text'
-			, 'style' : ''
-
-		}, {
-			'name' : 'description'
-			, 'id' : 'description'
-			, 'type' : 'textarea'
-			, 'style' : ''
-
-		}, {
-			'name' : 'attachment'
-			, 'id' : 'attachment'
-			, 'type' : 'file'
-			, 'style' : ''
-
-		}]
-		var regForm = new RegForm(params);
-		msg.send(regForm);
+	robot.respond(/add job/igm, function(msg){
 	});
 
 	/*Get Information from Robot brain*/
-	robot.respond(/find user ${current_user}/igm, function(){
-
+	robot.respond(/whois/igm, function(msg){
+		var cmd = msg.message.text;
+		var cmds = cmd.split(' ');
+		var target = cmds[cmds.length - 1];
+		console.log(robot.brain.userForId(msg.message.user.id));
+		
 	});
 
 	//=========================================================================

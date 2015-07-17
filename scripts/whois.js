@@ -6,8 +6,8 @@ module.exports = function (robot) {
 	robot.hear(/whoami/igm, function(msg){
 		try{
 			var userObj = robot.brain.userForId(msg.message.user.id);
-			var userObj = robot.brain.userForName(msg.message.user.name);
-			console.log(msg.message.user.id);
+			//var userObj = robot.brain.userForName(msg.message.user.name);
+			//console.log(msg.message.user.id);
 			msg.send(userObj);
 		}catch(ex){
 			console.log(msg);

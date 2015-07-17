@@ -1,7 +1,10 @@
 //js version
 //2015 07 08 Juneyoung Oh
 
+const SLACK_API_TOKEN = 'xoxp-7186818662-7186899793-7811139362-ccc6df';
+
 //FortuneTeller
+
 
 //Mumbling Object for fun
 var Mumbles = function(lang){
@@ -136,6 +139,9 @@ module.exports = function(robot){
 		var target = cmds[cmds.length - 1];
 		console.log(target);
 		console.log(robot.brain.userForId(msg.message.user.id));
+
+		// api 
+		// 
 		
 	});
 

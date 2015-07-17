@@ -20,14 +20,7 @@ module.exports = function (robot) {
 		try{
 			var name = getLastParam('whois', msg.message.text);
 			console.log('name >>' + name);
-
 			var userObj = robot.brain.usersForFuzzyName(name);
-
-			console.log('aaaaaa');
-			console.log(msg.Response);
-
-			console.log(userObj);
-
 			msg.reply(stringifyObject(userObj));
 		}catch(ex){
 			console.log(ex);

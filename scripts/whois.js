@@ -8,7 +8,7 @@ module.exports = function (robot) {
 			var userObj = robot.brain.userForId(msg.message.user.id);
 			//var userObj = robot.brain.userForName(msg.message.user.name);
 			//console.log(msg.message.user.id);
-			robot.logger.info(userObj);
+			//robot.logger.info(userObj);
 			msg.send(userObj);
 		}catch(ex){
 			console.log(msg);

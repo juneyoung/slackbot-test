@@ -19,6 +19,7 @@ module.exports = function (robot) {
 			var userObj = robot.brain.usersForFuzzyName(name);
 			robot.logger.info(userObj);
 		}catch(ex){
+			console.log(ex);
 			robot.logger.info(msg);
 		}
 	});	
@@ -30,6 +31,7 @@ module.exports = function (robot) {
 	var getLastParam = function (cmd, message) {
 		var lastParam = '';
 		if(message.endsWith(cmd)) return lastParam;
+		console.log(message);
 		var params = message.split(' ');
 		return params[params.length - 1];
 	}

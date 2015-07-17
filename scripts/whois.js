@@ -29,14 +29,10 @@ module.exports = function (robot) {
 	});
 
 	var getLastParam = function (cmd, message) {
-
-		console.log('aaaaaaaaa');
-		console.log(typeof message);
-		var lastParam = '';
-		if(message.endsWith(cmd)) return lastParam;
-		console.log(message);
 		var params = message.split(' ');
-		return params[params.length - 1];
+		var lastParam = params[params.length - 1];
+		if(lastParam == cmd) return '';
+		return lastParam;
 	}
 
 	var stringifyObject = function (obj) {

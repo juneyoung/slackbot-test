@@ -15,6 +15,8 @@ module.exports = function (robot) {
 	robot.hear(/whois/igm, function(msg){
 		try{
 			var name = getLastParam('whois', msg.message.text);
+			console.log('name >>' + name);
+
 			var userObj = robot.brain.usersForFuzzyName(name);
 
 			console.log('aaaaaa');

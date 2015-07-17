@@ -20,7 +20,7 @@ module.exports = function (robot) {
 			var userObj = robot.brain.usersForFuzzyName(name);
 
 			console.log('aaaaaa');
-			console.log(res.reply());
+			console.log(msg.Response());
 
 			console.log(userObj);
 

@@ -7,7 +7,7 @@ module.exports = function (robot) {
 	  msg.reply("I'll tell the chef to prepare your "+process.env.HUBOT_FAVOURITE_MEAL+" right away sir!");
 	});
 
-	robot.respond('whoami', function(msg){
+	robot.respond(/whoami/igm, function(msg){
 		try{
 			var userObj = robot.brain.userForId(msg.message.user.id);
 			msg.reply(stringifyObject(userObj));
@@ -21,6 +21,8 @@ module.exports = function (robot) {
 			var name = getLastParam('whois', msg.message.text);
 			console.log('name >>' + name);
 			var userObj = robot.brain.usersForFuzzyName(name);
+			console.log(userObj);
+			
 			msg.reply(stringifyObject(userObj));
 		}catch(ex){
 			console.log(ex);

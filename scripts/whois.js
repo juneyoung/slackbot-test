@@ -3,16 +3,20 @@ module.exports = function (robot) {
 	//register me 한 정보가 있으면 모든정보를 가져오고
 	// 아니라면 slack 계정의 기본정보를 출력한다.
 
-	robot.hear(/whoami/igm, function(msg){
+	robot.respond("make me dinner now!", function(msg) {
+	  msg.reply("I'll tell the chef to prepare your "+process.env.HUBOT_FAVOURITE_MEAL+" right away sir!");
+	});
+
+	robot.respond('whoami', function(msg){
 		try{
 			var userObj = robot.brain.userForId(msg.message.user.id);
-			msg.send(stringifyObject(userObj));
+			msg.reply(stringifyObject(userObj));
 		}catch(ex){
 			robot.logger.info('Your user data is currupted :-(');
 		}
 	});
 
-	robot.hear(/whois/igm, function(msg){
+	robot.respond(/whois/igm, function(msg){
 		try{
 			var name = getLastParam('whois', msg.message.text);
 			console.log('name >>' + name);
@@ -24,7 +28,7 @@ module.exports = function (robot) {
 
 			console.log(userObj);
 
-			msg.send(stringifyObject(userObj));
+			msg.reply(stringifyObject(userObj));
 		}catch(ex){
 			console.log(ex);
 			robot.logger.info(msg);

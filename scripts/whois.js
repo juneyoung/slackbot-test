@@ -43,7 +43,7 @@ module.exports = function (robot) {
 		var params = message.split(' ');
 		var lastParam = params[params.length - 1];
 		if(lastParam == cmd) return '';
-		return if(lastParam.startsWith('@')) ? lastParam.substring(1, lastParam.length) : lastParam;
+		return (lastParam.startsWith('@')) ? lastParam.substring(1, lastParam.length) : lastParam;
 	}
 
 	var stringifyObject = function (obj) {

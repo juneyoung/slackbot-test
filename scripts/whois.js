@@ -17,7 +17,6 @@ module.exports = function (robot) {
 		var name = getLastParam('whois', msg.message.text);
 		var userObj = robot.brain.usersForFuzzyName(name);
 		robot.logger.info(userObj);
-		var userId = userObj.id;
 	});	
 
 	robot.hear(/register me/igm, function(msg){
@@ -27,7 +26,7 @@ module.exports = function (robot) {
 	var getLastParam = function (cmd, message) {
 		var lastParam = '';
 		if(message.endsWith(cmd)) return lastParam;
-		params[] = message.split(' ');
+		var params = message.split(' ');
 		return params[params.length - 1];
 	}
 

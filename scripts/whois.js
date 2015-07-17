@@ -19,11 +19,16 @@ module.exports = function (robot) {
 	robot.respond(/whois/igm, function(msg){
 		try{
 			var name = getLastParam('whois', msg.message.text);
-			console.log('name >>' + name);
-			var userObj = robot.brain.usersForFuzzyName(name.substring(1, name.length));
-			console.log(userObj);
-
-			msg.reply(stringifyObject(userObj));
+			var userObj = robot.brain.usersForFuzzyName(name);
+			var ret = '';
+			if(userObj instanceof Array){
+				for(var i = 0; i < userObj.length; i++){
+					ret += stringifyObject(userObj[i]);
+				}
+			}else{
+				ret = stringifyObject(userObj);
+			}
+			msg.reply(ret);
 		}catch(ex){
 			console.log(ex);
 			robot.logger.info(msg);
@@ -38,7 +43,7 @@ module.exports = function (robot) {
 		var params = message.split(' ');
 		var lastParam = params[params.length - 1];
 		if(lastParam == cmd) return '';
-		return lastParam;
+		return if(lastParam.startsWith('@')) ? lastParam.substring(1, lastParam.length) : lastParam;
 	}
 
 	var stringifyObject = function (obj) {

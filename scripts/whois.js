@@ -6,22 +6,37 @@ module.exports = function (robot) {
 	robot.hear(/whoami/igm, function(msg){
 		try{
 			var userObj = robot.brain.userForId(msg.message.user.id);
-			//var userObj = robot.brain.userForName(msg.message.user.name);
-			//console.log(msg.message.user.id);
-			//robot.logger.info(userObj);
-			msg.send(userObj);
+			var answerStr = stringifyObject(userObj);
+			msg.send(answerStr);
 		}catch(ex){
-			console.log(msg);
+			robot.logger.info('Your user data is currupted :-(');
 		}
-
 	});
 
 	robot.hear(/whois/igm, function(msg){
+		var name = getLastParam('whois', msg.message.text);
 		var userObj = robot.brain.usersForFuzzyName(name);
+		robot.logger.info(userObj);
 		var userId = userObj.id;
 	});	
 
 	robot.hear(/register me/igm, function(msg){
 
 	});
+
+	var getLastParam = function (cmd, message) {
+		var lastParam = '';
+		if(message.endsWith(cmd)) return lastParam;
+		params[] = message.split(' ');
+		return params[params.length - 1];
+	}
+
+	var stringifyObject = function (obj) {
+		var ret = '';
+		for(data in obj) {
+			var singleLine = data + ' : ' + obj[data] + '\n';
+			ret += singleLine;
+		}
+		return ret;
+	}
 };
